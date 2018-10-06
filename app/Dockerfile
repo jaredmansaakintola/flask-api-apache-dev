@@ -6,4 +6,4 @@ FROM python:3-onbuild
 COPY . /usr/src/app
 
 # Commands in a list
-CMD ["python", "api.py"]
+CMD ["python", "app.py"]
