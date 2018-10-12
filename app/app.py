@@ -1,10 +1,9 @@
-# Observatory Service
-
 # Import framework
 from flask import Flask
 from flask_restful import Resource, Api
 from flask import jsonify
 
+# Your Auth Technique Here
 def requiresAuth(func):
   def wrapper(self, session_token, **params):
     session = {'iLoginID' : 1}
@@ -19,6 +18,7 @@ def requiresAuth(func):
 app = Flask(__name__)
 api = Api(app)
 
+# Your Restful Micro Service Here
 class Handler(Resource):
     @requiresAuth
     @app.route('/')
@@ -28,17 +28,12 @@ class Handler(Resource):
             'Animals': [
                 'Wolf',
                 'Bat',
-                'Cat'
+                'Cat',
+                'Minotaur'
             ]
         }
 
         return jsonify(animals)
-
-        # @requiresAuth
-        # @app.route('/hello_world')
-        # def handle_getHelloWorld(self):
-        #     return {'hello_world': 'Hello World'}
-
 
 api.add_resource(Handler, '/') # Route_1
 
