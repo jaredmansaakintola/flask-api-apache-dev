@@ -1,9 +1,6 @@
-# https://hub.docker.com/r/library/python/tags/
-FROM python:3-onbuild  
-
-# Coping source in current directory into the image
-# python:3-onbuild expects the source in /usr/src/app
+FROM python:3.4-alpine
 COPY . /usr/src/app
-
-# Commands in a list
-CMD ["python", "app.py"]
+# ADD . /usr/src/app
+WORKDIR /usr/src/app
+RUN pip install -r requirements.txt
+CMD ["python", "app.py"]]
